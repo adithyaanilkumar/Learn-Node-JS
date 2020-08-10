@@ -12,6 +12,10 @@ const server = http.createServer((req,res)=>{ //creating a server listener for r
     }
     if(url === '/message' && method ==='POST'){
         fs.writeFileSync('mesage.txt','DUMMY');
+        res.writeHead(302, {
+            "Location" : "/"
+        });
+        return res.end();
     }
     console.log("in server");
     console.log(res); // prints the response object
