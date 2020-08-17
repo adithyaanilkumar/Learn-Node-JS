@@ -1,13 +1,5 @@
 const http = require('http'); // importing or requiring http module
-const fs = require('fs')
+const requ = require('./3_redirects')
 
-const server = http.createServer((req,res)=>{
-}
-/*
-    console.log("in server");
-    res.setHeader('Content-Type','text/html'); // setting the response headers to html so that the response can be a html respose
-    res.write('<html><body>Hello from the other side</body></html>'); //writing the html
-    res.end() // ending the response so that it can be sent
- */
-})
+const server = http.createServer(requ.requests);
 server.listen(8080); // listening to the requests 
