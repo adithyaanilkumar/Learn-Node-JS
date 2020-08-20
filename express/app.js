@@ -1,12 +1,18 @@
 const http = require('http'); // importing or requiring http module
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser')
+
+app.use(bodyParser.urlencoded({extended:false}))
 app.use('/route',(req,res,next)=>{
-    console.log("In rioute")
-    res.send("<h1>hello rotued</h1>");
+    res.send('<form action="/product" method="POST"><input type="text" name ="message"><button type = "submit">submit</button></form>');
+})
+app.post('/product',(req,res,next)=>{
+    console.log("In prod");
+    console.log(req.body);
+    res.redirect('/');
 })
 app.use('/',(req,res,next)=>{
-    console.log("In not route")
     res.send("<h1>hello normal</h1>");
 })
 app.listen(8080); // listening to the requests 
